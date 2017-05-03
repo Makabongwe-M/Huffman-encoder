@@ -12,12 +12,12 @@ using namespace std;
 class HuffmanNode{
   public:
     HuffmanNode();
-    HuffmanNode(HuffmanNode *node1, HuffmanNode *node2);
+    HuffmanNode(shared_ptr<HuffmanNode> &node1, shared_ptr<HuffmanNode> &node2);
     HuffmanNode(char key,int value);
 
     void readCharacters(string filename);
-    void setLeft(HuffmanNode *tree);
-    void setRight(HuffmanNode *tree);
+    void setLeft(shared_ptr<HuffmanNode> &tree);
+    void setRight(shared_ptr<HuffmanNode> &tree);
     void setKey(char k);
     void setValue(int val);
     char getKey();
@@ -25,13 +25,13 @@ class HuffmanNode{
     bool hasLeft();
     bool hasRight();
     unordered_map< char ,int > frequencyMap;
-    HuffmanNode *left;
-    HuffmanNode *right;
+    shared_ptr<HuffmanNode> left;
+    shared_ptr<HuffmanNode> right;
 
   protected:
-    int parent;
-    char key;
-    int value;
+    int Parent;
+    char Key;
+    int Value;
 
 
 };

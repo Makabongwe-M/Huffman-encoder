@@ -14,38 +14,38 @@ HuffmanNode::HuffmanNode(){
 }
 
 HuffmanNode::HuffmanNode(char key, int value){
-   key = key;
-   value = value;
+   Key = key;
+   Value = value;
 }
 
-HuffmanNode::HuffmanNode(HuffmanNode *node1, HuffmanNode *node2){
+HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode> &node1, shared_ptr<HuffmanNode> &node2){
   left = node1;
   right = node2;
 }
 
-void HuffmanNode::setLeft(HuffmanNode *tree){
+void HuffmanNode::setLeft(shared_ptr<HuffmanNode> &tree){
     left = tree;
 }
 
 
-void HuffmanNode::setRight(HuffmanNode *tree){
+void HuffmanNode::setRight(shared_ptr<HuffmanNode> &tree){
     right = tree;
 }
 
 void HuffmanNode::setKey(char k){
-  key = k;
+  Key = k;
 }
 
 void HuffmanNode::setValue(int val){
-  value = val;
+  Value = val;
 }
 
 char HuffmanNode::getKey(){
-  return key;
+  return Key;
 }
 
 int HuffmanNode::getValue(){
-  return value;
+  return Value;
 }
 
 bool HuffmanNode::hasLeft(){

@@ -15,27 +15,30 @@ int main(){
 
   HuffmanNode ob;
   ob.readCharacters("sample.txt");
-  HuffmanNode node;
-  HuffmanNode node2;
+  shared_ptr<HuffmanNode> node (new HuffmanNode);
+  shared_ptr<HuffmanNode> node2(new HuffmanNode);
   int c = 0;
+
+  cout << (*node.get()).getKey();
 
   for(auto it : ob.frequencyMap){
     c++;
     if(c == 4){
-      node.setKey(it.first);
-      node.setValue(it.second);
+      node->setKey(it.first);
+      node -> setValue(it.second);
     }
     if(c == 6){
-      node2.setKey(it.first);
-      node2.setValue(it.second);
+      node2->setKey(it.first);
+      node2->setValue(it.second);
     }
   }
-  HuffmanNode parent(&node, &node2);
-  parent.setValue(node.getValue() + node2.getValue());
-  //cout << parent.value << endl;
-  HuffmanNode *temp;
-  temp = parent.left;
-  cout << parent.hasLeft()<< endl;
-  cout << parent.hasRight()<< endl;
+  shared_ptr<HuffmanNode> parent (new HuffmanNode);
+  parent->setValue(node->getValue() + node2->getValue());
+  parent->setLeft(node2);
+  parent->setRight(node);
+
+  cout << parent->hasRight()<< endl;
+  cout << parent->hasLeft()<< endl;
+  cout << parent->left->getValue()<< endl;
   return 0;
 }
