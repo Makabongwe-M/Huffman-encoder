@@ -56,19 +56,17 @@ bool HuffmanNode::hasRight(){
   return right!=NULL;
 }
 
-
-void HuffmanNode::readCharacters(string filename){
-  char ch;
-  fstream fin(filename.c_str(), fstream::in);
-
-  while (fin >> noskipws >> ch){
-    auto find = frequencyMap.find(ch);  //find the search for the character in the map
-    //if the character is in the map already, increment its value
-    if(find != frequencyMap.end()){
-      find -> second++;
-    }else{
-      frequencyMap.insert({ch, 1});
-    }
-  }
-
+shared_ptr<HuffmanNode> HuffmanNode::getLeft(){
+  return left;
 }
+shared_ptr<HuffmanNode> HuffmanNode::getRight(){
+  return right;
+}
+
+/*void HuffmanNode::traverse(shared_ptr<HuffmanNode> node){
+  if(root == NULL){return;}
+  cout << root->getLeft()->getValue();
+  cout << root->getValue() << endl;
+  CodeTable(root->getRight());
+
+}*/

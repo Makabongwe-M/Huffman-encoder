@@ -15,7 +15,6 @@ class HuffmanNode{
     HuffmanNode(shared_ptr<HuffmanNode> &node1, shared_ptr<HuffmanNode> &node2);
     HuffmanNode(char key,int value);
 
-    void readCharacters(string filename);
     void setLeft(shared_ptr<HuffmanNode> &tree);
     void setRight(shared_ptr<HuffmanNode> &tree);
     void setKey(char k);
@@ -24,9 +23,12 @@ class HuffmanNode{
     int getValue();
     bool hasLeft();
     bool hasRight();
-    unordered_map< char ,int > frequencyMap;
+    shared_ptr<HuffmanNode> getLeft();
+    shared_ptr<HuffmanNode> getRight();
+    //void traverse(shared_ptr<HuffmanNode> node);
     shared_ptr<HuffmanNode> left;
     shared_ptr<HuffmanNode> right;
+  //  shared_ptr<HuffmanNode> root;
 
   protected:
     int Parent;
