@@ -3,7 +3,10 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
+using std::cout;
+using std::setw;
 
 FileClass::FileClass(){
     //A constructor that does nothing
@@ -38,10 +41,13 @@ string FileClass::readLine(std::string StudentNumber){
 }
 
 //This method appends to the file
-void FileClass::writeToFile(string instance){
+void FileClass::writeToFile(char character, string bitstream){
     std::ofstream fileobject;
     fileobject.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
-    fileobject << instance+"\n";
+    fileobject <<"Character";
+    fileobject<< setw(50)<<"Bitstream"<<endl;
+    fileobject <<character << bitstream<<endl;
+    //fileobject << instance+"\n";
 }
 
 /*HuffmanTree ob("sample.txt");

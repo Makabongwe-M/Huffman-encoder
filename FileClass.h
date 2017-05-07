@@ -14,7 +14,7 @@ class FileClass{
         FileClass();
         FileClass(std::string fname);
         void readFile();
-        void writeToFile(string instance);
+        void writeToFile(char character, string bitstream);
         string readLine(std::string StudentNumber);
     protected:
 

@@ -8,13 +8,14 @@
 #include <fstream>
 #include <tr1/unordered_map>
 #include <queue>
+#include <vector>
 #include <bits/stdc++.h>
 using namespace std::tr1;
 using namespace std;
 
 class Comp{
   public:
-  	bool operator ()(shared_ptr<HuffmanNode> lhs, shared_ptr<HuffmanNode> rhs) {
+  	bool operator ()(const shared_ptr<HuffmanNode> lhs, const shared_ptr<HuffmanNode> rhs) {
   		return lhs->getValue() > rhs->getValue();
   	}
 };
@@ -23,14 +24,17 @@ class HuffmanTree{
   public:
     HuffmanTree(string filename);
     void readCharacters(string filename);
+    void setSize(int temp);
     bool buildTree();
-    void traverse(shared_ptr<HuffmanNode> node);
+    //string traverse(shared_ptr<HuffmanNode> root, string code);
     std::unordered_map< char ,int > frequencyMap;
+    std::unordered_map< char ,string > codeTable;
+    std::vector<char> characters;
     priority_queue<shared_ptr<HuffmanNode>, vector<shared_ptr<HuffmanNode>>,  Comp> mypq;
     shared_ptr<HuffmanNode> root;
+    string OutputFile;
 
   protected:
-
 
 };
 #endif
