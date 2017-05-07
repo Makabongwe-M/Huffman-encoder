@@ -22,11 +22,11 @@ class Comp{
 
 class HuffmanTree{
   public:
+    HuffmanTree();
     HuffmanTree(string filename);
     void readCharacters(string filename);
     void setSize(int temp);
     bool buildTree();
-    //string traverse(shared_ptr<HuffmanNode> root, string code);
     std::unordered_map< char ,int > frequencyMap;
     std::unordered_map< char ,string > codeTable;
     std::vector<char> characters;

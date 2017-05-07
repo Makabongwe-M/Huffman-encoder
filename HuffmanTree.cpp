@@ -9,6 +9,10 @@
 using namespace std::tr1;
 using namespace std;
 
+HuffmanTree::HuffmanTree(){
+
+}
+
 HuffmanTree::HuffmanTree(string filename){
   readCharacters(filename);
   for(auto it: frequencyMap){
@@ -22,8 +26,7 @@ HuffmanTree::HuffmanTree(string filename){
 
 void HuffmanTree::readCharacters(string filename){
   char ch;
-  //cout << filename;
-  fstream fin(filename.c_str(), fstream::in);
+  fstream fin(filename+".txt", fstream::in);
 
   while (fin >> noskipws >> ch){
     auto find = frequencyMap.find(ch);  //find the search for the character in the map
@@ -41,11 +44,9 @@ bool HuffmanTree::buildTree(){
   while(mypq.size() > 1){
     shared_ptr<HuffmanNode> node1;
     node1 = mypq.top();
-    //cout << mypq.top()->getValue()<< mypq.top()->getKey()<<endl;
     mypq.pop();
     shared_ptr<HuffmanNode> node2;
     node2 = mypq.top();
-    //cout << mypq.top()->getValue()<< mypq.top()->getKey()<<endl;
     mypq.pop();
 
     shared_ptr<HuffmanNode> parent(make_shared<HuffmanNode>());
@@ -57,15 +58,3 @@ bool HuffmanTree::buildTree(){
   }
   return false;
 }
-
-/*string HuffmanTree::traverse(shared_ptr<HuffmanNode> root, string code){
-  if(left == NULL && right == NULL){
-    codeTable.insert({Key, bitstream});
-  }
-  if(left!= NULL){
-    left->traverse(bitstream + "0");
-  }
-  if(right!= NULL){
-    right->traverse(bitstream+"1");
-  }
-}*/
