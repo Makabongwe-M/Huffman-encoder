@@ -27,15 +27,15 @@ HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode>&& other){
   Key = other->Key;
   Value = other->Value;
 
-  other ->Key = '\0';
-  other ->Value = 0;
+  other->Key = '\0';
+  other->Value = 0;
 }
 
 //an assignment operator
 HuffmanNode& HuffmanNode::operator=(const shared_ptr<HuffmanNode> & other)
 {
-    Key = other -> Key;
-    Value = other -> Key;
+    Key = other->Key;
+    Value = other->Value;
     return *this;
 
 }
@@ -164,6 +164,6 @@ void HuffmanNode::writeHeaderFile(std::unordered_map< char ,string > codeTable, 
   fileobject.close();
 }
 
-HuffmanNode::~HuffmanNode() {  
+HuffmanNode::~HuffmanNode() {
 
 }
