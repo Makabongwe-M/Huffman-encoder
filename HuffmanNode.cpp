@@ -20,6 +20,17 @@ HuffmanNode::HuffmanNode(const shared_ptr<HuffmanNode> &other) {
    Key = other->Key;
    Value = other->Value;
 
+   if(other->hasLeft() && !other->hasRight()){
+     left = other->left;
+   }
+   if(other->hasRight() && !other->hasLeft()){
+     right = other->right;
+   }
+   if(other->hasRight() && other->hasLeft()){
+     right = other->right;
+     left = other-> left;
+   }
+
 }
 
 //move constructor
@@ -27,8 +38,21 @@ HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode>&& other){
   Key = other->Key;
   Value = other->Value;
 
+  if(other->hasLeft() && !other->hasRight()){
+    left = other->left;
+  }
+  if(other->hasRight() && !other->hasLeft()){
+    right = other->right;
+  }
+  if(other->hasRight() && other->hasLeft()){
+    right = other->right;
+    left = other-> left;
+  }
+
   other->Key = '\0';
   other->Value = 0;
+  other->right = NULL;
+  other-> left = NULL;
 }
 
 //an assignment operator
@@ -36,6 +60,18 @@ HuffmanNode& HuffmanNode::operator=(const shared_ptr<HuffmanNode> & other)
 {
     Key = other->Key;
     Value = other->Value;
+
+    if(other->hasLeft() && !other->hasRight()){
+      left = other->left;
+    }
+    if(other->hasRight() && !other->hasLeft()){
+      right = other->right;
+    }
+    if(other->hasRight() && other->hasLeft()){
+      right = other->right;
+      left = other-> left;
+    }
+
     return *this;
 
 }
