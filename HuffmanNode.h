@@ -1,6 +1,5 @@
 #ifndef HUFFMANNODE_H
 #define HUFFMANNODE_H
-#include "FileClass.h"
 #include <iostream>
 #include <memory>
 #include <string>
@@ -32,7 +31,7 @@ class HuffmanNode{
     int getValue();
     bool hasLeft();
     bool hasRight();
-    void tableWriter(char Key, string bitstream, string &OutputFile);
+    void tableWriter(char key, string bitstream, string &OutputFile);
     void readCharacters(string filename);
     void writeHeaderFile(std::unordered_map< char ,string > codeTable, string &OutputFile);
     shared_ptr<HuffmanNode> getLeft();
@@ -49,7 +48,7 @@ class HuffmanNode{
   protected:
     int size;
     int Parent;
-    char Key;
+    char key;
     int Value;
 
 

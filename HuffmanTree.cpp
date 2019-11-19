@@ -19,7 +19,7 @@ HuffmanTree::HuffmanTree(string filename){
     shared_ptr<HuffmanNode> node(make_shared<HuffmanNode>());
     node->setKey(it.first);
     node->setValue(it.second);
-    mypq.push(node);
+    queue.push(node);
   }
 
 }
@@ -41,19 +41,19 @@ void HuffmanTree::readCharacters(string filename){
 }
 bool HuffmanTree::buildTree(){
 
-  while(mypq.size() > 1){
+  while(queue.size() > 1){
     shared_ptr<HuffmanNode> node1;
-    node1 = mypq.top();
-    mypq.pop();
+    node1 = queue.top();
+    queue.pop();
     shared_ptr<HuffmanNode> node2;
-    node2 = mypq.top();
-    mypq.pop();
+    node2 = queue.top();
+    queue.pop();
 
     shared_ptr<HuffmanNode> parent(make_shared<HuffmanNode>());
     parent->setValue(node1->getValue() + node2->getValue());
     parent->setLeft(node1);
     parent->setRight(node2);
-    mypq.push(parent);
+    queue.push(parent);
 
   }
   return false;

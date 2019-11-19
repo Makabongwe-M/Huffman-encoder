@@ -1,5 +1,4 @@
 #include "HuffmanTree.h"
-#include "FileClass.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -24,17 +23,17 @@ int main(int argc, char *argv[]){
   string OutputFile = argv[2];
 
   HuffmanTree ob(InputFile);
-  ob.mypq.top()->OutputFile = OutputFile;
-  ob.mypq.top()->InputFile = InputFile;
-  int size = ob.mypq.size();
+  ob.queue.top()->OutputFile = OutputFile;
+  ob.queue.top()->InputFile = InputFile;
+  int size = ob.queue.size();
   ob.buildTree();
 
   std::unordered_map< char ,string > codeTable;
-  ob.mypq.top()->setSize(size, OutputFile);
-  ob.mypq.top()->traverse("",codeTable, OutputFile);
+  ob.queue.top()->setSize(size, OutputFile);
+  ob.queue.top()->traverse("",codeTable, OutputFile);
 
-  ob.mypq.top()->readCharacters(InputFile);
-  ob.mypq.top()->writeHeaderFile(codeTable, OutputFile);
+  ob.queue.top()->readCharacters(InputFile);
+  ob.queue.top()->writeHeaderFile(codeTable, OutputFile);
 
 
 

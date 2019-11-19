@@ -1,8 +1,8 @@
 CXX = g++ -std=c++11
 CFLAG = -c
 
-huffencode: interface.o HuffmanNode.o HuffmanTree.o FileClass.o
-	$(CXX) interface.o HuffmanNode.o HuffmanTree.o FileClass.o -o huffencode
+huffencode: interface.o HuffmanNode.o HuffmanTree.o
+	$(CXX) interface.o HuffmanNode.o HuffmanTree.o -o huffencode
 
 interface.o: interface.cpp
 	$(CXX) $(CFLAG) interface.cpp
@@ -13,8 +13,5 @@ HuffmanNode.o: HuffmanNode.cpp HuffmanNode.h
 HuffmanTree.o: HuffmanTree.cpp HuffmanTree.h
 	$(CXX) $(CFLAG) HuffmanTree.cpp
 
-FileClass.o: FileClass.cpp FileClass.h
-	$(CXX) $(CFLAG) FileClass.cpp
-
 clean:
-	rm *.o huffencode
+	rm *.o huffencode a.out

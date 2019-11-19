@@ -30,7 +30,7 @@ class HuffmanTree{
     std::unordered_map< char ,int > frequencyMap;
     std::unordered_map< char ,string > codeTable;
     std::vector<char> characters;
-    priority_queue<shared_ptr<HuffmanNode>, vector<shared_ptr<HuffmanNode>>,  Comp> mypq;
+    priority_queue<shared_ptr<HuffmanNode>, vector<shared_ptr<HuffmanNode>>,  Comp> queue;
     shared_ptr<HuffmanNode> root;
     string OutputFile;
 
