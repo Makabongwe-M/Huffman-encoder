@@ -1,8 +1,0 @@
-  -When running the code, the files should not have the ".txt" extension.
-  -For example type "huffencode inputfile outputfile"
-  -two output files will be produced. "output.txt" and "output.hdr"
-  -output.txt will have the table and output.hdr will have the bitstream (I'm not sure if I have confused the two, alas,
-  the files are generated.).
-  -The constructors are declared in the HuffmanNode.cpp file, except the move assignment operator which is in the
-  header file.
-  -Please feel free to contact me if there are issues.-Lastly, I have a query regarding assignment 1, who do I speak to about that?
