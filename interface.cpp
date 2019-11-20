@@ -19,21 +19,21 @@ using std::setw;
 
 int main(int argc, char *argv[]){
 
-  string InputFile = argv[1];
-  string OutputFile = argv[2];
+  string inputFile = argv[1];
+  string outputFile = argv[2];
 
-  HuffmanTree ob(InputFile);
-  ob.queue.top()->OutputFile = OutputFile;
-  ob.queue.top()->InputFile = InputFile;
+  HuffmanTree ob(inputFile);
+  ob.queue.top()->outputFile = outputFile;
+  ob.queue.top()->inputFile = inputFile;
   int size = ob.queue.size();
   ob.buildTree();
 
   std::unordered_map< char ,string > codeTable;
-  ob.queue.top()->setSize(size, OutputFile);
-  ob.queue.top()->traverse("",codeTable, OutputFile);
+  ob.queue.top()->setSize(size, outputFile);
+  ob.queue.top()->traverse("",codeTable, outputFile);
 
-  ob.queue.top()->readCharacters(InputFile);
-  ob.queue.top()->writeHeaderFile(codeTable, OutputFile);
+  ob.queue.top()->readCharacters(inputFile);
+  ob.queue.top()->writeHeaderFile(codeTable, outputFile);
 
 
 

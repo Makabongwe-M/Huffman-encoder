@@ -31,25 +31,25 @@ class HuffmanNode{
     int getValue();
     bool hasLeft();
     bool hasRight();
-    void tableWriter(char key, string bitstream, string &OutputFile);
+    void tableWriter(char key, string bitstream, string &outputFile);
     void readCharacters(string filename);
-    void writeHeaderFile(std::unordered_map< char ,string > codeTable, string &OutputFile);
+    void writeHeaderFile(std::unordered_map< char ,string > codeTable, string &outputFile);
     shared_ptr<HuffmanNode> getLeft();
     shared_ptr<HuffmanNode> getRight();
-    void traverse(string bitstream, std::unordered_map< char ,string >&codeTable, string &OutputFile);
+    void traverse(string bitstream, std::unordered_map< char ,string >&codeTable, string &outputFile);
     shared_ptr<HuffmanNode> left;
     shared_ptr<HuffmanNode> right;
     std::vector<char> characters;
-    string OutputFile;
-    string InputFile;
-    void setSize(int size, string &OutputFile);
+    string outputFile;
+    string inputFile;
+    void setSize(int size, string &outputFile);
 
 
   protected:
     int size;
-    int Parent;
+    int parent;
     char key;
-    int Value;
+    int value;
 
 
 

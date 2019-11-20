@@ -17,7 +17,7 @@ HuffmanNode::HuffmanNode(){
 //Copy constructor
 HuffmanNode::HuffmanNode(const shared_ptr<HuffmanNode> &other) {
    key = other->key;
-   Value = other->Value;
+   value = other->value;
 
    if(other->hasLeft() && !other->hasRight()){
      left = other->left;
@@ -35,7 +35,7 @@ HuffmanNode::HuffmanNode(const shared_ptr<HuffmanNode> &other) {
 //move constructor
 HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode>&& other){
   key = other->key;
-  Value = other->Value;
+  value = other->value;
 
   if(other->hasLeft() && !other->hasRight()){
     left = other->left;
@@ -49,7 +49,7 @@ HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode>&& other){
   }
 
   other->key = '\0';
-  other->Value = 0;
+  other->value = 0;
   other->right = NULL;
   other-> left = NULL;
 }
@@ -58,7 +58,7 @@ HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode>&& other){
 HuffmanNode& HuffmanNode::operator=(const shared_ptr<HuffmanNode> & other)
 {
     key = other->key;
-    Value = other->Value;
+    value = other->value;
 
     if(other->hasLeft() && !other->hasRight()){
       left = other->left;
@@ -78,7 +78,7 @@ HuffmanNode& HuffmanNode::operator=(const shared_ptr<HuffmanNode> & other)
 //constructor that creates a HuffmanNode
 HuffmanNode::HuffmanNode(char key, int value){
    key = key;
-   Value = value;
+   value = value;
 }
 
 HuffmanNode::HuffmanNode(shared_ptr<HuffmanNode> &node1, shared_ptr<HuffmanNode> &node2){
@@ -103,7 +103,7 @@ void HuffmanNode::setKey(char k){
 
 //A method that sets the value (number of occurances in the text file) of a HuffmanNode
 void HuffmanNode::setValue(int val){
-  Value = val;
+  value = val;
 }
 
 //returns the key of HuffmanNode
@@ -113,7 +113,7 @@ char HuffmanNode::getKey(){
 
 //returns the frequency of a key of a HuffmanNode
 int HuffmanNode::getValue(){
-  return Value;
+  return value;
 }
 
 //Checks if a HuffmanNode has a left child
@@ -138,24 +138,24 @@ shared_ptr<HuffmanNode> HuffmanNode::getRight(){
 /*The method traverses down the tree (in order). It returns the character and its corresponding bitstream.
 codeTable (unordered_map) is passed in to store the character and its corresponding bitstream.
 */
-void HuffmanNode::traverse(string bitstream, std::unordered_map< char ,string >&codeTable, string &OutputFile){
+void HuffmanNode::traverse(string bitstream, std::unordered_map< char ,string >&codeTable, string &outputFile){
   if(left == NULL && right == NULL){
-    tableWriter(key, bitstream, OutputFile);    //Append the character and its bitstream to the output file
+    tableWriter(key, bitstream, outputFile);    //Append the character and its bitstream to the output file
     codeTable.insert({key,bitstream});          //insert the character and its bitstream into the codeTable
   }
   if(left!= NULL){
-    left->traverse(bitstream + "0", codeTable, OutputFile);
+    left->traverse(bitstream + "0", codeTable, outputFile);
   }
   if(right!= NULL){
-    right->traverse(bitstream+"1", codeTable, OutputFile);
+    right->traverse(bitstream+"1", codeTable, outputFile);
   }
 
 }
 
 //Writes the key(character) and its bitstream into the output file
-void HuffmanNode::tableWriter(char key, string bitstream, string &OutputFile){
+void HuffmanNode::tableWriter(char key, string bitstream, string &outputFile){
   std::ofstream fileobject;
-  fileobject.open(OutputFile+".txt", std::ofstream::out | std::ofstream::app);
+  fileobject.open(outputFile+".txt", std::ofstream::out | std::ofstream::app);
   if(key == '\n'){                              //newline character proved to be a special case
     fileobject<< "\\n"<< " "<< bitstream <<endl;
   }else{
@@ -164,9 +164,9 @@ void HuffmanNode::tableWriter(char key, string bitstream, string &OutputFile){
 }
 
 //For te sake of writing the number of different characters int the text file provided
-void HuffmanNode::setSize(int size, string &OutputFile){
+void HuffmanNode::setSize(int size, string &outputFile){
   std::ofstream fileobject;
-  fileobject.open(OutputFile+".txt", std::ofstream::out | std::ofstream::app);
+  fileobject.open(outputFile+".txt", std::ofstream::out | std::ofstream::app);
   fileobject <<"Number of different characters: "<<size<<endl;
   fileobject.close();
 }
@@ -184,10 +184,10 @@ void HuffmanNode::readCharacters(string filename){
 
 /*codeTable has a character and bitstream. The characters vector has all characters in order.
 Find the corresponding bitstream for each character and write into a file.*/
-void HuffmanNode::writeHeaderFile(std::unordered_map< char ,string > codeTable, string &OutputFile){
+void HuffmanNode::writeHeaderFile(std::unordered_map< char ,string > codeTable, string &outputFile){
 
   std::ofstream fileobject;
-  fileobject.open(OutputFile+".hdr", std::ofstream::out | std::ofstream::app);
+  fileobject.open(outputFile+".hdr", std::ofstream::out | std::ofstream::app);
   std::unordered_map<char, string>::iterator it;
 
   for(int i = 0; i < characters.size(); i++){

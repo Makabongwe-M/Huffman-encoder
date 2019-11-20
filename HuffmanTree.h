@@ -32,7 +32,7 @@ class HuffmanTree{
     std::vector<char> characters;
     priority_queue<shared_ptr<HuffmanNode>, vector<shared_ptr<HuffmanNode>>,  Comp> queue;
     shared_ptr<HuffmanNode> root;
-    string OutputFile;
+    string outputFile;
 
   protected:
 

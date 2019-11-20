@@ -15,10 +15,10 @@ HuffmanTree::HuffmanTree(){
 
 HuffmanTree::HuffmanTree(string filename){
   readCharacters(filename);
-  for(auto it: frequencyMap){
+  for(auto character: frequencyMap){
     shared_ptr<HuffmanNode> node(make_shared<HuffmanNode>());
-    node->setKey(it.first);
-    node->setValue(it.second);
+    node->setKey(character.first);
+    node->setValue(character.second);
     queue.push(node);
   }
 
